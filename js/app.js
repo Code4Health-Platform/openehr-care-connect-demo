@@ -67,7 +67,7 @@ $(document).ready(function() {
   function getPatientDemographicsNHS() {
     var subjectId = defaultSubjectId
     return $.ajax({
-      url: "http://yellow.testlab.nhs.uk/careconnect-ri/STU3/Patient/1011",
+      url: "//yellow.testlab.nhs.uk/careconnect-ri/STU3/Patient/1011",
       type: 'GET',
       success: function(data) {
 
