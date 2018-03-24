@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>openEHR-FHIR Demo app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Loading Bootstrap -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Loading Styles -->
+  <link href="bootflat/css/bootflat.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container" style="margin-top: 50px;">
+    <div class="well demographics" style="position: relative">
+      <div class="row">
+
+        <div class="col-md-6 text-left">
+          <div class="project-info">
+            <h2 id="project-name">openEHR-FHIR Demo</h2>
+            <div class="row">
+              <div class="interopen-pic col-xs-6 col-md-6"></div>
+              <div class="fhir-pic col-xs-3 col-md-3 pull-left"></div>
+              <div class="openehr-pic col-xs-3 col-md-3 pull-right"></div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="patient-pic"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="patient-info">
+            <h4 id="patient-name"></h4>
+            <p>Age: <span class="patient-age"></span></p>
+            <p>Gender: <span id="patient-gender"></span></p>
+            <p>DOB: <span class="patient-dob"></span></p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="patient-stats well" style="position: relative">
+      <div class="patient-records">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="fancy-collapse-panel">
+              <div class="panel-group" id="accordionAllergies" role="tablist" aria-multiselectable="true" style="width: 97%;">
+                <div class="panel panel-primary">
+                  <div class="panel-heading" role="tab" id="headingAllergies">
+                    <h3 class="panel-title">
+                             <a data-toggle="collapse" data-parent="#accordionAllergies" href="#collapseAllergies" aria-expanded="true" aria-controls="collapseAllergies">Allergies</a>
+                         </h3>
+                  </div>
+                  <div id="collapseAllergies" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingAllergies">
+                    <div class="panel-body" style="height: auto;">
+                      <table id="fhirAllergies" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Causative Agent</th>
+                            <th>SNOMED CT</th>
+                            <th>Manifestation</th>
+                            <th>Date</th>
+                            <th>openEHR CDR</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="fancy-collapse-panel">
+              <div class="panel-group" id="accordionConditions" role="tablist" aria-multiselectable="true" style="width: 97%;">
+                <div class="panel panel-info">
+                  <div class="panel-heading" role="tab" id="headingConditions">
+                    <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionConditions" href="#collapseConditions" aria-expanded="true" aria-controls="collapseConditions">Conditions</a>
+                            </h3>
+                  </div>
+                  <div id="collapseConditions" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingConditions">
+                    <div class="panel-body" style="height: auto;">
+                      <table id="fhirConditions" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Problems</th>
+                            <th>SNOMED CT</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>openEHR CDR</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="fancy-collapse-panel">
+              <div class="panel-group" id="accordionMeds" role="tablist" aria-multiselectable="true" style="width: 97%;">
+                <div class="panel panel-danger">
+                  <div class="panel-heading" role="tab" id="headingMeds">
+                    <h3 class="panel-title">
+                                   <a data-toggle="collapse" data-parent="#accordionMeds" href="#collapseMeds" aria-expanded="true" aria-controls="collapseMeds">Medications</a>
+                               </h3>
+                  </div>
+                  <div id="collapseMeds" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingMeds">
+                    <div class="panel-body" style="height: auto;">
+                      <table id="fhirMeds" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Medication</th>
+                            <th>SNOMED CT</th>
+                            <th>Dosage</th>
+                            <th>Date</th>
+                            <th>openEHR CDR</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="fancy-collapse-panel">
+              <div class="panel-group" id="accordionProcedures" role="tablist" aria-multiselectable="true" style="width: 97%;">
+                <div class="panel panel-warning">
+                  <div class="panel-heading" role="tab" id="headingProcedures">
+                    <h3 class="panel-title">
+                                   <a data-toggle="collapse" data-parent="#accordionProcedures" href="#collapseProcedures" aria-expanded="true" aria-controls="collapseProcedures">Procedures
+                                   </a>
+                               </h3>
+                  </div>
+                  <div id="collapseProcedures" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingProcedures">
+                    <div class="panel-body">
+                      <table id="fhirProcedures" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Procedure</th>
+                            <th>SNOMED CT</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>openEHR CDR</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <a href="#top" id="smoothscroll" title="Back to top"></a>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
