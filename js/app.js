@@ -64,42 +64,6 @@ $(document).ready(function() {
     });
   }
 
-  function getPatientDemographicsNHS() {
-    var subjectId = defaultSubjectId
-    return $.ajax({
-      url: "//yellow.testlab.nhs.uk/careconnect-ri/STU3/Patient/1011",
-      type: 'GET',
-      success: function(data) {
-
-//        console.log(data)
-
-        var party = data;
-
-        // Name
-        $("#patient-name").html(party.name[0].given + ' ' + party.name[0].family);
-
-        // Complete age
-        var age = getAge(formatDateUS(party.birthDate));
-        $(".patient-age").html(age);
-
-        // Date of birth
-        var date = new Date(party.birthDate);
-        var stringDate = monthNames[date.getMonth()] + '. ' + date.getDate() + ', ' + date.getFullYear();
-        $(".patient-dob").html(stringDate);
-
-        // Age in years
-        $(".patient-age-years").html(getAgeInYears(party.dateOfBirth));
-
-        // Gender
-        var gender = party.gender;
-        $("#patient-gender").html(gender.substring(0, 1) + gender.substring(1).toLowerCase());
-
-        //Dummy picture
-        $('.patient-pic').css('background', 'url(img/' + gender.toLowerCase() + '.png)');
-
-      }
-    });
-  }
 
   //Just a dummy routune pending resolving issues with https on YellowLab NHS FHIR REf implemenetation
   function getPatientDemographicsTest() {
