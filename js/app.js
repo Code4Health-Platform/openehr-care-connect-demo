@@ -101,6 +101,35 @@ $(document).ready(function() {
     });
   }
 
+  //Just a dummy routune pending resolving issues with https on YellowLab NHS FHIR REf implemenetation
+  function getPatientDemographicsTest() {
+
+            // Name
+            $("#patient-name").html('John' + ' ' + 'Smith');
+
+            // Complete age
+            var age = getAge(formatDateUS('1938-09-09'));
+            $(".patient-age").html(age);
+
+            // Date of birth
+            var date = new Date('1938-09-09');
+            var stringDate = monthNames[date.getMonth()] + '. ' + date.getDate() + ', ' + date.getFullYear();
+            $(".patient-dob").html(stringDate);
+
+            // Age in years
+            $(".patient-age-years").html(getAgeInYears('1938-09-09'));
+
+            // Gender
+            var gender = 'MALE';
+            $("#patient-gender").html(gender.substring(0, 1) + gender.substring(1).toLowerCase());
+
+            //Dummy picture
+            $('.patient-pic').css('background', 'url(img/' + gender.toLowerCase() + '.png)');
+
+            return $().promise();
+
+  }
+
 
   function getFhirAllergies(subjectId, cdrName) {
 
@@ -445,7 +474,7 @@ $(document).ready(function() {
   }
 
   // display page
-    getPatientDemographicsNHS().done(function() {
+    getPatientDemographicsTest().done(function() {
       $.when(
         getFhirAllergies(defaultSubjectId, "Ethercis"),
         getFhirAllergies(defaultSubjectId, "Marand"),
