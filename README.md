@@ -24,3 +24,8 @@ A minimal NodeJs app is provided to ease deployment on Heroku. It is not necessa
 ### Acknowledgments
 
 This app was heavily derived from the [Marand Ehrscape 'PHR demo' app](https://github.com/ehrscape/examples/tree/master/demo)
+
+
+### License
+
+Apache License, Version 2.0
